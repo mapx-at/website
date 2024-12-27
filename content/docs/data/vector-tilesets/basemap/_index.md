@@ -256,7 +256,57 @@ weight: 2
         zoom: 14, // Zoom-Level
         attributionControl: false
       });
-    });
+   
+
+   // Tooltip-Element erstellen
+  const inspectBox = document.createElement('div');
+  inspectBox.style.position = 'absolute';
+  inspectBox.style.backgroundColor = 'rgba(20, 19, 19, 0.9)';
+  inspectBox.style.padding = '10px';
+  inspectBox.style.border = '1px solid #ccc';
+  inspectBox.style.borderRadius = '5px';
+  inspectBox.style.fontFamily = 'monospace';
+  inspectBox.style.fontSize = '12px';
+  inspectBox.style.pointerEvents = 'none';
+  inspectBox.style.display = 'none';
+  document.body.appendChild(inspectBox);
+
+  // Mousemove-Ereignis für Hover-Inspektion
+  map.on('mousemove', (e) => {
+    // Features unter der Maus abfragen
+    const features = map.queryRenderedFeatures(e.point);
+
+    if (features.length > 0) {
+      // Tooltip sichtbar machen
+      inspectBox.style.display = 'block';
+      inspectBox.style.left = `${e.point.x + 15}px`;
+      inspectBox.style.top = `${e.point.y + 15}px`;
+
+      // Informationen über die Features sammeln
+      let content = '<strong>Inspect:</strong><br><ul>';
+      features.forEach((feature) => {
+        content += `
+          <li>
+            <strong>Layer:</strong> ${feature.layer.id}<br>
+            <strong>Attributes:</strong> ${JSON.stringify(feature.properties, null, 2)}
+          </li>
+          <hr>
+        `;
+      });
+      content += '</ul>';
+      inspectBox.innerHTML = content;
+    } else {
+      // Tooltip verstecken, wenn keine Features unter der Maus sind
+      inspectBox.style.display = 'none';
+    }
+  });
+
+  // Mouseleave-Ereignis für das Entfernen des Inspect-Tooltips
+  map.on('mouseleave', () => {
+    inspectBox.style.display = 'none';
+  });
+});
+
   </script>
 
 
