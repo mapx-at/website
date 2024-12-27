@@ -256,57 +256,60 @@ weight: 2
         zoom: 14, // Zoom-Level
         attributionControl: false
       });
-   
-
    // Tooltip-Element erstellen
-  const inspectBox = document.createElement('div');
-  inspectBox.style.position = 'absolute';
-  inspectBox.style.backgroundColor = 'rgba(20, 19, 19, 0.9)';
-  inspectBox.style.padding = '10px';
-  inspectBox.style.border = '1px solid #ccc';
-  inspectBox.style.borderRadius = '5px';
-  inspectBox.style.fontFamily = 'monospace';
-  inspectBox.style.fontSize = '12px';
-  inspectBox.style.pointerEvents = 'none';
-  inspectBox.style.display = 'none';
-  document.body.appendChild(inspectBox);
+    const tooltip = document.createElement("div");
+    tooltip.style.position = "absolute";
+    tooltip.style.padding = "8px";
+    tooltip.style.border = "1px solid";
+    tooltip.style.borderRadius = "4px";
+    tooltip.style.pointerEvents = "none";
+    tooltip.style.display = "none";
+    tooltip.style.zIndex = "1000";
+    document.body.appendChild(tooltip);
 
-  // Mousemove-Ereignis für Hover-Inspektion
-  map.on('mousemove', (e) => {
-    // Features unter der Maus abfragen
-    const features = map.queryRenderedFeatures(e.point);
-
-    if (features.length > 0) {
-      // Tooltip sichtbar machen
-      inspectBox.style.display = 'block';
-      inspectBox.style.left = `${e.point.x + 15}px`;
-      inspectBox.style.top = `${e.point.y + 15}px`;
-
-      // Informationen über die Features sammeln
-      let content = '<strong>Inspect:</strong><br><ul>';
-      features.forEach((feature) => {
-        content += `
-          <li>
-            <strong>Layer:</strong> ${feature.layer.id}<br>
-            <strong>Attributes:</strong> ${JSON.stringify(feature.properties, null, 2)}
-          </li>
-          <hr>
-        `;
-      });
-      content += '</ul>';
-      inspectBox.innerHTML = content;
-    } else {
-      // Tooltip verstecken, wenn keine Features unter der Maus sind
-      inspectBox.style.display = 'none';
+    // Funktion zur Anwendung von Dark/Light Mode auf den Tooltip
+    function applyTooltipTheme() {
+      const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (isDarkMode) {
+        tooltip.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+        tooltip.style.color = "white";
+        tooltip.style.borderColor = "white";
+      } else {
+        tooltip.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+        tooltip.style.color = "black";
+        tooltip.style.borderColor = "black";
+      }
     }
-  });
 
-  // Mouseleave-Ereignis für das Entfernen des Inspect-Tooltips
-  map.on('mouseleave', () => {
-    inspectBox.style.display = 'none';
-  });
-});
+    // Tooltip-Styling basierend auf dem initialen Farbmodus anwenden
+    applyTooltipTheme();
 
+    // Farbmodusänderung beobachten und Tooltip aktualisieren
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTooltipTheme);
+
+    // Mousemove-Ereignis hinzufügen
+    map.on("mousemove", (e) => {
+      const features = map.queryRenderedFeatures(e.point);
+      if (features.length > 0) {
+        const feature = features[0];
+        tooltip.style.display = "block";
+        tooltip.style.left = `${e.originalEvent.clientX + 10}px`;
+        tooltip.style.top = `${e.originalEvent.clientY + 10}px`;
+
+        tooltip.innerHTML = `
+          <strong>Layer:</strong> ${feature.layer.id}<br>
+          <strong>Attribute:</strong> ${JSON.stringify(feature.properties, null, 2)}
+        `;
+      } else {
+        tooltip.style.display = "none";
+      }
+    });
+
+    // Mouseleave-Ereignis hinzufügen
+    map.on("mouseleave", () => {
+      tooltip.style.display = "none";
+    });
+  });
   </script>
 
 
