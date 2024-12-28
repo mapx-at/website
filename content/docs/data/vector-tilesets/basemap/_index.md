@@ -18,240 +18,277 @@ weight: 2
       const map = new maplibregl.Map({
         container: 'map', // ID des HTML-Containers
         style: {
-          "version": 8,
-          "name": "mapx basemap",
-          "metadata": {"maputnik:renderer": "mlgljs"},
-          "sources": {
-            "mapx_basemap": {
-              "type": "vector",
-              "url": "https://tiles.mapx.at/landuse,waterbody,waterroute"
-            }
-          },
-          "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
-          "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
-          "layers": [
-            {
-              "id": "landuse-building",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "building"]],
-              "paint": {"fill-color": "rgb(237, 202, 202)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-ancillary",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "ancillary"]],
-              "paint": {"fill-color": "rgb(242, 242, 240)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-agriculture",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "agriculture"]],
-              "paint": {"fill-color": "rgb(250, 255, 233)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-crop",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "crop"]],
-              "paint": {"fill-color": "rgb(241, 246, 223)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-bush",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "bush"]],
-              "paint": {"fill-color": "rgb(201, 228, 186)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-garden",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "garden"]],
-              "paint": {
-                "fill-color": "rgb(208, 234, 194)",
-                "fill-antialias": false,
-                "fill-translate-anchor": "map"
-              }
-            },
-            {
-              "id": "landuse-vineyard",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "vineyard"]],
-              "paint": {"fill-color": "rgba(191,191,86,0.25)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-alp",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "alp"]],
-              "paint": {"fill-color": "rgb(206, 211, 188)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-forest",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "forest"]],
-              "paint": {"fill-color": "rgb(210, 236, 197)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-krummholz",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "krummholz"]],
-              "paint": {"fill-color": "rgb(157, 189, 138)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-forestroad",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "forestroad"]],
-              "paint": {"fill-color": "rgb(248, 248, 245)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-stream",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "stream"]],
-              "paint": {"fill-color": "rgb(179, 217, 255)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-lake",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "lake"]],
-              "paint": {"fill-color": "rgb(225, 248, 211)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-riparian",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "riparian"]],
-              "paint": {"fill-color": "rgb(225, 248, 211)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-wetland",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "wetland"]],
-              "paint": {"fill-color": "rgb(226, 247, 211)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-road",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "road"]],
-              "paint": {"fill-color": "rgb(246, 246, 244)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-rail",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "rail"]],
-              "paint": {"fill-color": "rgb(246, 246, 244)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-roadside",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "roadside"]],
-              "paint": {"fill-color": "rgb(246, 246, 244)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-parking",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "parking"]],
-              "paint": {"fill-color": "rgb(246, 246, 244)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-business",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "business"]],
-              "paint": {"fill-color": "rgb(242, 242, 240)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-landfill",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "landfill"]],
-              "paint": {"fill-color": "rgb(248, 248, 245)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-recreation",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "recreation"]],
-              "paint": {"fill-color": "rgb(216, 229, 210)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-cemetery",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "cemetery"]],
-              "paint": {"fill-color": "rgb(229, 222, 210)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-rock",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "rock"]],
-              "paint": {"fill-color": "rgb(242, 242, 239)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-underbrush",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "underbrush"]],
-              "paint": {"fill-color": "rgb(238, 238, 235)", "fill-antialias": false}
-            },
-            {
-              "id": "landuse-glacier",
-              "type": "fill",
-              "source": "mapx_basemap",
-              "source-layer": "landuse",
-              "filter": ["all", ["==", "usage", "glacier"]],
-              "paint": {"fill-color": "rgb(115,240,255)", "fill-antialias": false}
-            },
-            {
-              "id": "waterroute-lines",
-              "type": "line",
-              "source": "mapx_basemap",
-              "source-layer": "waterroute",
-              "paint": {"line-color": "rgb(179, 217, 255)", "line-width": 2}
-            }
-          ],
-          "id": "osm-liberty"
+  "version": 8,
+  "name": "mapx basemap",
+  "metadata": {"maputnik:renderer": "mlgljs"},
+  "sources": {
+    "mapx_basemap": {
+      "type": "vector",
+      "url": "https://tiles.mapx.at/landuse,waterbody,waterroute,road"
+    }
+  },
+  "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "landuse-building",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "building"]],
+      "paint": {"fill-color": "rgb(237, 202, 202)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-ancillary",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "ancillary"]],
+      "paint": {"fill-color": "rgb(242, 242, 240)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-agriculture",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "agriculture"]],
+      "paint": {"fill-color": "rgba(235,255,170,0.25)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-crop",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "crop"]],
+      "paint": {"fill-color": "rgb(241, 246, 223)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-bush",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "bush"]],
+      "paint": {"fill-color": "rgb(201, 228, 186)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-garden",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "garden"]],
+      "paint": {
+        "fill-color": "rgba(136,204,102,0.4)",
+        "fill-antialias": false,
+        "fill-translate-anchor": "map"
+      }
+    },
+    {
+      "id": "landuse-vineyard",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "vineyard"]],
+      "paint": {"fill-color": "rgba(191,191,86,0.25)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-alp",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "alp"]],
+      "paint": {"fill-color": "rgb(206, 211, 188)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-forest",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "forest"]],
+      "paint": {"fill-color": "rgba(71,179,18,0.25)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-krummholz",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "krummholz"]],
+      "paint": {"fill-color": "rgb(157, 189, 138)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-forestroad",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "forestroad"]],
+      "paint": {"fill-color": "rgb(248, 248, 245)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-stream",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "stream"]],
+      "paint": {"fill-color": "rgb(179, 217, 255)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-lake",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "lake"]],
+      "paint": {"fill-color": "rgb(225, 248, 211)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-riparian",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "riparian"]],
+      "paint": {"fill-color": "rgb(225, 248, 211)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-wetland",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "wetland"]],
+      "paint": {"fill-color": "rgba(163,255,115,0.25)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-road",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "road"]],
+      "paint": {"fill-color": "rgb(246, 246, 244)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-rail",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "rail"]],
+      "paint": {"fill-color": "rgb(246, 246, 244)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-roadside",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "roadside"]],
+      "paint": {"fill-color": "rgb(246, 246, 244)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-parking",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "parking"]],
+      "paint": {"fill-color": "rgb(246, 246, 244)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-business",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "business"]],
+      "paint": {"fill-color": "rgb(242, 242, 240)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-landfill",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "landfill"]],
+      "paint": {"fill-color": "rgb(248, 248, 245)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-recreation",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "recreation"]],
+      "paint": {"fill-color": "rgba(102,153,77,0.25)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-cemetery",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "cemetery"]],
+      "paint": {"fill-color": "rgba(153,125,77,0.25)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-rock",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "rock"]],
+      "paint": {
+        "fill-color": "rgba(242, 242, 239, 0.58)",
+        "fill-antialias": false
+      }
+    },
+    {
+      "id": "landuse-underbrush",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "underbrush"]],
+      "paint": {"fill-color": "rgb(238, 238, 235)", "fill-antialias": false}
+    },
+    {
+      "id": "landuse-glacier",
+      "type": "fill",
+      "source": "mapx_basemap",
+      "source-layer": "landuse",
+      "filter": ["all", ["==", "usage", "glacier"]],
+      "paint": {"fill-color": "rgba(115,240,255,0.25)", "fill-antialias": false}
+    },
+    {
+      "id": "waterroute-lines",
+      "type": "line",
+      "source": "mapx_basemap",
+      "source-layer": "waterroute",
+      "paint": {"line-color": "rgb(179, 217, 255)", "line-width": 2}
+    },
+    {
+      "id": "road-G-halo",
+      "type": "line",
+      "source": "mapx_basemap",
+      "source-layer": "road",
+      "minzoom": 14,
+      "maxzoom": 20,
+      "filter": ["all", ["==", "edgecat", "G"]],
+      "layout": {"line-cap": "round"},
+      "paint": {
+        "line-width": {
+          "stops": [[14, 2], [15, 3], [16, 7], [18, 13], [19, 26], [20, 52]],
+          "base": 1.4
         },
+        "line-color": "rgba(189, 186, 186, 1)"
+      }
+    },
+    {
+      "id": "road-G",
+      "type": "line",
+      "source": "mapx_basemap",
+      "source-layer": "road",
+      "minzoom": 14,
+      "maxzoom": 20,
+      "filter": ["all", ["==", "edgecat", "G"]],
+      "layout": {"line-cap": "round"},
+      "paint": {
+        "line-width": {
+          "stops": [[14, 1], [15, 2], [16, 6], [18, 12], [19, 25], [20, 50]],
+          "base": 1.4
+        },
+        "line-color": "rgba(255, 255, 255, 1)"
+      }
+    }
+  ],
+  "id": "osm-liberty"
+},
         center: [15.16, 48.207], // Startposition: Longitude, Latitude (z. B. Berlin)
         zoom: 14, // Zoom-Level
         attributionControl: false
