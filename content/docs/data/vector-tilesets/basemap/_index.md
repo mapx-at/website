@@ -441,6 +441,171 @@ All boundaries are dissolved from the parcel polygonsand therfore match on verte
 
 ### streets
 
+#### type
+| type | description                               |
+|------|-------------------------------------------|
+| A    | Autobahn                                  |
+| AW   | Almweg                                    |
+| B    | Landesstraße B                            |
+| BA   | Bringungsanlage                           |
+| BS   | Bundesstraße Deutschland                  |
+| EA   | Eisenbahn Anschlussbahn                   |
+| EH   | Eisenbahn hochrangig                      |
+| EN   | Eisenbahn Nebenbahn                       |
+| ES   | Sonstige Eisenbahn                        |
+| EU   | Eisenbahn U-Bahn                          |
+| FS   | Forststraße/-weg                          |
+| FW   | Fußweg                                    |
+| G    | Gemeindestraße                            |
+| GS   | Genossenschaftsstraße                     |
+| GW   | Güterweg                                  |
+| H    | Hauptstraße                               |
+| HA   | Hauptstraße A                             |
+| HB   | Hauptstraße B                             |
+| I    | Interessentenweg                          |
+| IO   | Interessentenstraße öffentlich            |
+| KR   | Kreisstraße Deutschland                   |
+| L    | Landesstraße L                            |
+| LS   | Landesstraße Italien                      |
+| LD   | Landesstraße Deutschland                  |
+| M    | Mountainbikeweg                           |
+| MW   | Mountainbike-                             |
+| N    | nicht bekannt                             |
+| OW   | ÖWG Instandhaltungsweg                    |
+| P    | hochrangige Privatstraße                  |
+| PO   | Privatstraße mit Öffentlichkeitscharakter |
+| PS   | Privatstraße/-weg                         |
+| PW   | Privatweg                                 |
+| R    | andere Straße                             |
+| RW   | Radweg                                    |
+| S    | Schnellstraße                             |
+| SB   | Seilbahn                                  |
+| ST   | Straßenbahntrasse                         |
+| SD   | Staatsstraße Deutschland                  |
+| SS   | Staatsstraße Italien                      |
+| T    | Tourismus                                 |
+| TW   | Treppelweg                                |
+| U    | Rad bzw. Fußweg                           |
+| UR   | überregionaler Radweg                     |
+| SW   | stillschweigend gewidmete Straße          |
+| VS   | Verbindungsstraße                         |
+| VW   | Verbindungsweg                            |
+| W    | Weg                                       |
+| WA   | Wanderweg                                 |
+| WW   | Wirtschaftsweg                            |
+
+#### functional road class
+
+| Nummer | Beschreibung                                           |
+|--------|-------------------------------------------------------|
+| -1     | Unbekannt                                              |
+| 000    | Straßen des transnationalen Netzes                    |
+| 001    | Straßen des transregionalen Netzes                    |
+| 002    | Straßen des zentralörtlichen Netzes                   |
+| 003    | Straßen des regionalen Netzes                         |
+| 004    | Gemeindeverbindungen                                  |
+| 005    | Straßen des innerörtlichen Netzes                     |
+| 006    | Sammelstraßen                                         |
+| 007    | Straßen der internen Erschließung                     |
+| 008    | Sonstige Straße                                       |
+| 010    | Rad-/Fußweg                                           |
+| 011    | Wirtschaftsweg                                        |
+| 012    | Sonstiger Weg                                         |
+| 020    | Bahntrasse Hauptnetz                                  |
+| 021    | Bahntrasse Ergänzungsnetz                             |
+| 022    | Bahntrasse Anschlussbahn, Verbindungsgleis, sonstiges Gleis |
+| 024    | Straßenbahntrasse                                     |
+| 025    | U-Bahn-Trasse                                         |
+| 031    | Fähre                                                 |
+| 045    | Treppe                                                |
+| 046    | Rolltreppe                                            |
+| 047    | Aufzug                                                |
+| 048    | Rampe für den nichtmotorisierten Verkehr              |
+| 098    | Betriebsumkehr                                        |
+| 099    | Betriebsweg                                           |
+| 101    | Fußweg ohne Anzeige                                   |
+| 102    | Fußwegpassage                                         |
+| 103    | Seilbahn und Sonstige                                 |
+| 105    | Almaufschließungsweg                                  |
+| 106    | Forstaufschließungsweg                                |
+| 107    | Gebäudezufahrt                                        |
+| 115    | Friedhofsweg                                          |
+| 200    | Singletrail (MTB)                                     |
+| 201    | Shared Trail                                          |
+| 300    | Wanderweg                                             |
+
+#### form of way
+
+| Nummer | Beschreibung                                      |
+|--------|--------------------------------------------------|
+| -1     | Unbekannt                                        |
+| 001    | Autobahn                                         |
+| 002    | Fahrbahnteilung (keine Autobahn)                 |
+| 003    | Ungeteilte Fahrbahn                              |
+| 004    | Kreisverkehr                                     |
+| 006    | Parkplatz                                        |
+| 007    | Parkgarage                                       |
+| 008    | Unstrukturierte Kreuzung                        |
+| 010    | Ab-/Einbiegefahrbahn                             |
+| 011    | Servicestraße-Fahrbahn/Pannenstreifen            |
+| 012    | Ausfahrt/Einfahrt von/zu einem Parkplatz         |
+| 013    | Straße (teilweise) im Objekt                    |
+| 014    | Fußgängerzone                                   |
+| 015    | Fußweg                                          |
+| 016    | Fußweg (teilweise) im Objekt                    |
+| 017    | Spezielle Fahrbahnführung                       |
+| 018    | Stiege                                          |
+| 019    | Furt                                            |
+| 020    | Straße für Berechtigte/Behörden                 |
+| 021    | Stiege (teilweise) im Objekt                    |
+| 022    | Rolltreppe                                      |
+| 023    | Rolltreppe (teilweise) im Objekt                |
+| 024    | Aufzug                                          |
+| 025    | Aufzug (teilweise) im Objekt                    |
+| 026    | Rampe NMIV (teilweise) im Objekt                |
+| 101    | Straßenbahn                                     |
+| 102    | U-Bahn                                          |
+| 103    | Bahn                                            |
+| 200    | Singletrail-Strecke (MTB)                       |
+| 220    | MTB Strecke                                     |
+| 301    | Betriebsumkehr                                  |
+| 400    | Traktorweg                                      |
+| 401    | Steig                                           |
+| 402    | Steigspuren                                     |
+| 403    | Klettersteig                                    |
+| 404    | Alpine Route                                    |
+| 405    | Gletscherroute                                  |
+| 406    | Schluchtweg                                     |
+| 504    | Geh- und Radweg                                 |
+| 505    | Radweg                                          |
+| 506    | Normalspurbahn mehrgleisig                      |
+| 507    | Normalspurbahn eingleisig                       |
+| 508    | Schmalspurbahn                                  |
+| 509    | Zahnradbahn                                     |
+| 510    | Breitspurbahn                                   |
+| 511    | Seilschwebebahn                                 |
+| 512    | Standseilbahn                                   |
+| 513    | Magnetschwebebahn                               |
+| 514    | Monorail                                        |
+| 515    | Schwebebahn                                     |
+| 516    | Schlepplift                                     |
+| 517    | Materialseilbahn                                |
+| 518    | Kombilift                                       |
+| 519    | Sessellift                                      |
+| 520    | Babylift                                        |
+| 521    | Umlaufbahn                                      |
+| 522    | Zweiseilpendelbahn                              |
+| 523    | Schrägaufzug                                    |
+| 524    | Pendelbahn                                      |
+| 525    | Sesselbahn                                      |
+| 526    | Kabinenbahn                                     |
+| 527    | Kombibahn                                       |
+| 528    | Korblift                                        |
+| 599    | Sonstige                                        |
+| 601    | Wasserweg / Fähre                               |
+| 701    | Rampe für nichtmotorisierten Verkehr            |
+| 702    | Einschließlichstrecke                           |
+
 ### water
 
 
