@@ -29,7 +29,7 @@ weight: 2
            "terrain": {
             "type": "raster-dem",
             "tiles": [
-              "https://tiles.mapx.at/terrain/{z}/{x}/{y}.webp"
+              "https://tiles.mapx.at/terrain/{z}/{x}/{y}"
             ],
             "tileSize": 512
           }
