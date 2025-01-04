@@ -10,12 +10,12 @@ outputs:
   section: [HTML, RSS]
 
 
-defaultContentLanguage: en
+defaultContentLanguage: de
 
 
 languages:
-  en:
-    languageName: English
+  de:
+    languageName: Deutsch
     weight: 1
     title: MapX
 
@@ -40,22 +40,14 @@ enableInlineShortcodes: true
 menu:
   main:
     - identifier: documentation
-      name: Documentation
+      name: Dokumentation
       pageRef: /docs
       weight: 1
-    - identifier: showcase
-      name: Showcase
-      pageRef: /showcase
-      weight: 2
     - identifier: blog
       name: Blog
       pageRef: /blog
       weight: 3
-    - identifier: about
-      name: About
-      pageRef: /about
-      weight: 4
-    - name: Search
+    - name: Suche
       weight: 5
       params:
         type: search

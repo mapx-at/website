@@ -1,5 +1,5 @@
 ---
-title: Data
+title: Daten
 type: docs
 prev: docs
 sidebar:

@@ -7,10 +7,10 @@ layout: wide
 <link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet" />
 
 <style>
-    .content {
-      width: 100%;
-      height: calc(100vh - 20vh); /* 100% viewport height minus 20px */
-    }
+  .content {
+    width: 100%;
+    height: calc(100vh - 20vh);
+  }
 
   .map-tooltip {
     position: absolute;
@@ -25,7 +25,7 @@ layout: wide
     z-index: 1000;
   }
 
-   .hillshade-overlay {
+  .hillshade-overlay {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -36,6 +36,7 @@ layout: wide
     z-index: 1000;
     font-size: 14px;
     max-width: 300px;
+    display: none; /* Start as hidden */
   }
 
   .hillshade-overlay label {
@@ -50,9 +51,24 @@ layout: wide
     margin-bottom: 15px;
   }
 
+  .toggle-hillshade {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1100;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+  }
 </style>
 
+
 <div id="map" style="width: 100%; height: 100%; position: relative;">
+  <div class="toggle-hillshade">⚙ Hillshade</div>
   <div class="hillshade-overlay">
     <label for="highlightColor">Highlight-Farbe:</label>
     <input type="color" id="highlightColor" value="#ffffff">
@@ -64,6 +80,7 @@ layout: wide
     <input type="range" id="azimuthRange" min="0" max="360" step="1" value="315">
     <label for="altitudeRange">Altitude (Beleuchtungshöhe):</label>
     <input type="range" id="altitudeRange" min="0" max="90" step="1" value="45">
+    <button class="close-hillshade" style="margin-top: 10px;">X</button>
   </div>
 </div>
 
@@ -107,6 +124,19 @@ layout: wide
       attributionControl: false
     });
 
+  const hillshadeOverlay = document.querySelector('.hillshade-overlay');
+  const toggleButton = document.querySelector('.toggle-hillshade');
+  const closeButton = document.querySelector('.close-hillshade');
+
+
+toggleButton.addEventListener('click', () => {
+    const isHidden = hillshadeOverlay.style.display === 'none';
+    hillshadeOverlay.style.display = isHidden ? 'block' : 'none';
+  });
+
+  closeButton.addEventListener('click', () => {
+    hillshadeOverlay.style.display = 'none';
+  });
   
     // Hillshade-Funktionen
   document.getElementById('highlightColor').addEventListener('input', (e) => {
