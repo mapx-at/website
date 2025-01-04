@@ -108,26 +108,26 @@ layout: wide
     });
 
   
-     // Hillshade-Einstellungen
-    document.getElementById('highlightColor').addEventListener('input', (e) => {
-      map.setPaintProperty('hillshade', 'hillshade-highlight-color', e.target.value);
-    });
+    // Hillshade-Funktionen
+  document.getElementById('highlightColor').addEventListener('input', (e) => {
+    map.setPaintProperty('hillshade', 'hillshade-highlight-color', e.target.value);
+  });
 
-    document.getElementById('shadowColor').addEventListener('input', (e) => {
-      map.setPaintProperty('hillshade', 'hillshade-shadow-color', e.target.value);
-    });
+  document.getElementById('shadowColor').addEventListener('input', (e) => {
+    map.setPaintProperty('hillshade', 'hillshade-shadow-color', e.target.value);
+  });
 
-    document.getElementById('opacityRange').addEventListener('input', (e) => {
-      map.setPaintProperty('hillshade', 'hillshade-opacity', parseFloat(e.target.value));
-    });
+  document.getElementById('opacityRange').addEventListener('input', (e) => {
+    map.setPaintProperty('hillshade', 'hillshade-opacity', parseFloat(e.target.value));
+  });
 
-    document.getElementById('azimuthRange').addEventListener('input', (e) => {
-      map.setPaintProperty('hillshade', 'hillshade-illumination-direction', parseInt(e.target.value));
-    });
+  document.getElementById('azimuthRange').addEventListener('input', (e) => {
+    map.setPaintProperty('hillshade', 'hillshade-illumination-direction', parseInt(e.target.value));
+  });
 
-    document.getElementById('altitudeRange').addEventListener('input', (e) => {
-      map.setPaintProperty('hillshade', 'hillshade-illumination-altitude', parseInt(e.target.value));
-    });
+  document.getElementById('altitudeRange').addEventListener('input', (e) => {
+    map.setPaintProperty('hillshade', 'hillshade-illumination-altitude', parseInt(e.target.value));
+  });
 
 
 
