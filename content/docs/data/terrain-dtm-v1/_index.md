@@ -7,14 +7,25 @@ sidebar:
 weight: 1
 ---
 
+
+URL für den Zugriff: 
+```
+https://tiles.mapx.at/terrain/{z}/{x}/{y}
+```
+
+Beispiel:
+```
+https://tiles.mapx.at/terrain/14/8881/5681
+```
+
+## **Übersicht**
+
+
 Das **MapX Terrain-DTM v1 Tileset** ist eine digitale Darstellung der Erdoberfläche, die ausschließlich die natürlichen Geländestrukturen ohne Vegetation, Gebäude oder andere Objekte zeigt.  
 
-Die Höhenwerte werden in den Rot-, Grün- und Blau-Kanälen kodiert:  
-- **Kachelgröße** - 512x512 Pixel  
-- **Kachelformat** - WebP  
-- **vertikale Auflösung** - 1 Dezimeter  
-- **horizontale Auflösung** - max. Zoomstufe 15 (~2,39 Meter pro Pixel)  
 
+<br/>
+<link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet">
 
 <div id="map" style="width: 100%; height: 400px;"></div>
 
@@ -26,14 +37,14 @@ Die Höhenwerte werden in den Rot-, Grün- und Blau-Kanälen kodiert:
       style: {
         "version": 8,
         "name": "mapx basemap",
-        "metadata": { "maputnik:renderer": "mlgljs" },
         "sources": {
-           "hillshadeSource": {
+          "hillshadeSource": {
             "type": "raster-dem",
             "tiles": [
               "https://tiles.mapx.at/terrain/{z}/{x}/{y}"
             ],
             "tileSize": 512,
+            "minzoom": 12,
             "maxzoom": 15
           }
         },
@@ -44,21 +55,54 @@ Die Höhenwerte werden in den Rot-, Grün- und Blau-Kanälen kodiert:
             "id": "hillshade",
             "type": "hillshade",
             "source": "hillshadeSource",
-            "minzoom": 7,  
-            "maxzoom": 19,
+            "minzoom": 12,
+            "maxzoom": 15,
             "layout": {},
             "paint": {
               "hillshade-shadow-color": "#aaaaaa",
-              "hillshade-highlight-color": "#ffffff"            }
-          }         
+              "hillshade-highlight-color": "#ffffff"
+            }
+          }
         ],
         "id": "mapx-hillshade"
       },
-      center: [15.16, 48.207], 
-      zoom: 14, // Zoom-Level
-      attributionControl: false
-    })};
+      center: [15.16, 48.207],
+      zoom: 14,
+      attributionControl: false, // Aktiviert das Attribution Control
+      minZoom: 12,
+      maxZoom: 15
+    });
+
+    map.addControl(
+      new maplibregl.AttributionControl({
+        customAttribution: '<a href="https://data.bev.gv.at" target="_blank">Datenquelle: ©BEV data.bev.gv.at</a>'
+      })
+    );
+  });
 </script>
+
+
+<br/>
+
+Die Kodierung der Höhenwerte erfolgt in den Rot-, Grün- und Blau-Kanälen eines 32-bit WebP Bildes mit Transparenz:  
+- **Kachelgröße:** 512x512 Pixel  
+- **Kachelformat:** WebP  
+- **vertikale Auflösung:** 1 Dezimeter  
+- **horizontale Auflösung:**
+
+| **Zoomstufe** | **Meter pro Pixel** |
+|---------------|--------------------------------------------|
+| 6             | ca. 165.21m                                     |
+| 7             | ca. 82.58 m                                     |
+| 8             | ca. 41.29 m                                     |
+| 9             | ca. 20.65  m                                    |
+| 10            | ca. 10.33  m                                    |
+| 11            | ca. 5.17   m                                    |
+| 12            | ca. 2.58   m                                    |
+| 13            | ca. 1.29   m                                    |
+| 14            | ca. 0.65   m                                    |
+| 15            | ca. 0.32   m                                    |
+
 
 
 ## **Anwendungen**
@@ -70,7 +114,7 @@ Die Höhenwerte werden in den Rot-, Grün- und Blau-Kanälen kodiert:
 
 ## **Datenquellen und Updates**
 
-Die Geländedaten im Tileset basieren auf hochwertigen österreichischen Höhendatenquellen und werden regelmäßig aktualisiert, sobald neue oder verbesserte Daten verfügbar sind.  
+Die Geländedaten im Tileset basieren auf den Daten der [Serie ALS DTM Höhenraster 1m Stichtag 15.09.2023](https://data.bev.gv.at/geonetwork/srv/api/records/5b510b4a-f592-4c02-991f-012cb1a65ea9) des [Bundesamt für Eich- und Vermessungswesen](https://www.bev.gv.at/).  
 
 
 ## **Dekodierung von Höhendaten**

@@ -4,7 +4,8 @@ type: docs
 prev: docs/data/vector-tilesets
 sidebar:
   open: true
-weight: 2
+weight: 1
+draft: true
 ---
 
 

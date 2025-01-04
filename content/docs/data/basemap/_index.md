@@ -5,10 +5,12 @@ prev: docs/data/vector-tilesets
 sidebar:
   open: true
 weight: 3
+draft: true
 ---
 
 
 ## Overview
+<link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet">
 
 <div id="map" style="width: 100%; height: 400px;"></div>
 
