@@ -25,40 +25,49 @@ layout: wide
     z-index: 1000;
   }
 
-  .hillshade-controls {
+   .hillshade-overlay {
     position: absolute;
     top: 10px;
-    left: 10px;
-    background-color: white;
-    border: 1px solid #ccc;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
-    padding: 10px;
-    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    padding: 15px;
     z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    max-width: 300px;
   }
 
-  .hillshade-controls label {
+  .hillshade-overlay label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
   }
 
-  .hillshade-controls input[type="range"] {
+  .hillshade-overlay input[type="range"],
+  .hillshade-overlay input[type="color"] {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
+
 </style>
 
-<div id="map" style="width: 100%; height: 100%;"></div>
-<div class="hillshade-controls">
-  <label for="azimuthRange">Beleuchtungsrichtung (Azimuth):</label>
-  <input type="range" id="azimuthRange" min="0" max="360" value="315">
-  <label for="altitudeRange">Beleuchtungshöhe (Altitude):</label>
-  <input type="range" id="altitudeRange" min="0" max="90" value="45">
-  <label for="exaggerationRange">Höhenexaggeration:</label>
-  <input type="range" id="exaggerationRange" min="1" max="5" step="0.1" value="1">
+<div id="map" style="width: 100%; height: 100%; position: relative;">
+  <div class="hillshade-overlay">
+    <label for="highlightColor">Highlight-Farbe:</label>
+    <input type="color" id="highlightColor" value="#ffffff">
+    <label for="shadowColor">Schatten-Farbe:</label>
+    <input type="color" id="shadowColor" value="#555555">
+    <label for="opacityRange">Transparenz:</label>
+    <input type="range" id="opacityRange" min="0" max="1" step="0.1" value="1">
+    <label for="azimuthRange">Azimuth (Beleuchtungsrichtung):</label>
+    <input type="range" id="azimuthRange" min="0" max="360" step="1" value="315">
+    <label for="altitudeRange">Altitude (Beleuchtungshöhe):</label>
+    <input type="range" id="altitudeRange" min="0" max="90" step="1" value="45">
+  </div>
 </div>
+
+
 
 <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
 <script>
@@ -99,18 +108,27 @@ layout: wide
     });
 
   
-    // Hillshade-Parameter mit Schiebereglern steuern
-    const azimuthRange = document.getElementById("azimuthRange");
-    const altitudeRange = document.getElementById("altitudeRange");
-    const exaggerationRange = document.getElementById("exaggerationRange");
-
-    azimuthRange.addEventListener("input", () => {
-      map.setPaintProperty("hillshade", "hillshade-illumination-direction", Number(azimuthRange.value));
+     // Hillshade-Einstellungen
+    document.getElementById('highlightColor').addEventListener('input', (e) => {
+      map.setPaintProperty('hillshade', 'hillshade-highlight-color', e.target.value);
     });
 
-    altitudeRange.addEventListener("input", () => {
-      map.setPaintProperty("hillshade", "hillshade-illumination-altitude", Number(altitudeRange.value));
+    document.getElementById('shadowColor').addEventListener('input', (e) => {
+      map.setPaintProperty('hillshade', 'hillshade-shadow-color', e.target.value);
     });
+
+    document.getElementById('opacityRange').addEventListener('input', (e) => {
+      map.setPaintProperty('hillshade', 'hillshade-opacity', parseFloat(e.target.value));
+    });
+
+    document.getElementById('azimuthRange').addEventListener('input', (e) => {
+      map.setPaintProperty('hillshade', 'hillshade-illumination-direction', parseInt(e.target.value));
+    });
+
+    document.getElementById('altitudeRange').addEventListener('input', (e) => {
+      map.setPaintProperty('hillshade', 'hillshade-illumination-altitude', parseInt(e.target.value));
+    });
+
 
 
     // GeolocateControl hinzufügen
