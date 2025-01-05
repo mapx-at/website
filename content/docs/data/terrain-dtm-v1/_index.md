@@ -10,12 +10,12 @@ weight: 1
 
 URL f√ºr den Zugriff: 
 ```
-https://tiles.mapx.at/terrain/{z}/{x}/{y}
+https://tiles.mapx.at/terrain-dtm-v1/{z}/{x}/{y}
 ```
 
 Beispiel:
 ```
-https://tiles.mapx.at/terrain/14/8881/5681
+https://tiles.mapx.at/terrain-dtm-v1/14/8881/5681
 ```
 
 ## **√úbersicht**
@@ -41,11 +41,11 @@ Das **MapX Terrain-DTM v1 Tileset** ist eine digitale Darstellung der Erdoberfl√
           "hillshadeSource": {
             "type": "raster-dem",
             "tiles": [
-              "https://tiles.mapx.at/terrain/{z}/{x}/{y}"
+              "https://tiles.mapx.at/terrain-dtm-v1/{z}/{x}/{y}"
             ],
             "tileSize": 512,
-            "minzoom": 12,
-            "maxzoom": 15
+            "minzoom": 6,
+            "maxzoom": 16
           }
         },
         "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
@@ -55,8 +55,8 @@ Das **MapX Terrain-DTM v1 Tileset** ist eine digitale Darstellung der Erdoberfl√
             "id": "hillshade",
             "type": "hillshade",
             "source": "hillshadeSource",
-            "minzoom": 12,
-            "maxzoom": 15,
+            "minzoom": 6,
+            "maxzoom": 16,
             "layout": {},
             "paint": {
               "hillshade-shadow-color": "#aaaaaa",
@@ -69,8 +69,8 @@ Das **MapX Terrain-DTM v1 Tileset** ist eine digitale Darstellung der Erdoberfl√
       center: [15.16, 48.207],
       zoom: 14,
       attributionControl: false, // Aktiviert das Attribution Control
-      minZoom: 12,
-      maxZoom: 15
+      minZoom: 6,
+      maxZoom: 16
     });
 
     map.addControl(
@@ -78,6 +78,9 @@ Das **MapX Terrain-DTM v1 Tileset** ist eine digitale Darstellung der Erdoberfl√
         customAttribution: '<a href="https://data.bev.gv.at" target="_blank">Datenquelle: ¬©BEV data.bev.gv.at</a>'
       })
     );
+
+    // Add Fullscreen Control
+    map.addControl(new maplibregl.FullscreenControl());
   });
 </script>
 
@@ -91,17 +94,19 @@ Die Kodierung der H√∂henwerte erfolgt in den Rot-, Gr√ºn- und Blau-Kan√§len eine
 - **horizontale Aufl√∂sung:**
 
 | **Zoomstufe** | **Meter pro Pixel** |
-|---------------|--------------------------------------------|
-| 6             | ca. 165.21m                                     |
-| 7             | ca. 82.58 m                                     |
-| 8             | ca. 41.29 m                                     |
-| 9             | ca. 20.65  m                                    |
-| 10            | ca. 10.33  m                                    |
-| 11            | ca. 5.17   m                                    |
-| 12            | ca. 2.58   m                                    |
-| 13            | ca. 1.29   m                                    |
-| 14            | ca. 0.65   m                                    |
-| 15            | ca. 0.32   m                                    |
+|------------|-------------------------------|
+| 6          | ca. 834.08 m                 |
+| 7          | ca. 417.04 m                 |
+| 8          | ca. 208.52 m                 |
+| 9          | ca. 104.26 m                 |
+| 10         | ca. 52.13 m                  |
+| 11         | ca. 26.06 m                  |
+| 12         | ca. 13.03 m                  |
+| 13         | ca. 6.52 m                   |
+| 14         | ca. 3.26 m                   |
+| 15         | ca. 1.63 m                   |
+| 16         | ca. 0.82 m                   |
+
 
 
 

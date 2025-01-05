@@ -10,18 +10,18 @@
        "hillshadeSource": {
         "type": "raster-dem",
         "tiles": [
-          "https://tiles.mapx.at/terrain/{z}/{x}/{y}"
+          "https://tiles.mapx.at/terrain-dtm-v1/{z}/{x}/{y}"
         ],
         "tileSize": 512,
-        "maxzoom": 15
+        "maxzoom": 16
       },
        "terrainSource": {
         "type": "raster-dem",
         "tiles": [
-          "https://tiles.mapx.at/terrain/{z}/{x}/{y}"
+          "https://tiles.mapx.at/terrain-dtm-v1/{z}/{x}/{y}"
         ],
         "tileSize": 512,
-        "maxzoom": 15
+        "maxzoom": 16
       }
     },
     "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
