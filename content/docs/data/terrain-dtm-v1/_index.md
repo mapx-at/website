@@ -45,7 +45,7 @@ Das **MapX Terrain-DTM v1 Tileset** ist eine digitale Darstellung der Erdoberfl√
             ],
             "tileSize": 512,
             "minzoom": 6,
-            "maxzoom": 16
+            "maxzoom": 18
           }
         },
         "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
@@ -56,7 +56,7 @@ Das **MapX Terrain-DTM v1 Tileset** ist eine digitale Darstellung der Erdoberfl√
             "type": "hillshade",
             "source": "hillshadeSource",
             "minzoom": 6,
-            "maxzoom": 16,
+            "maxzoom": 18,
             "layout": {},
             "paint": {
               "hillshade-shadow-color": "#aaaaaa",
@@ -70,7 +70,7 @@ Das **MapX Terrain-DTM v1 Tileset** ist eine digitale Darstellung der Erdoberfl√
       zoom: 14,
       attributionControl: false, // Aktiviert das Attribution Control
       minZoom: 6,
-      maxZoom: 16
+      maxZoom: 18
     });
 
     map.addControl(
