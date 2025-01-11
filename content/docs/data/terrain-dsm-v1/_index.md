@@ -45,7 +45,7 @@ Das MapX Terrain-DSM v1 Tileset ist eine digitale Darstellung der Erdoberfläche
             ],
             "tileSize": 512,
             "minzoom": 6,
-            "maxzoom": 18
+            "maxzoom": 16
           }
         },
         "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
@@ -56,7 +56,7 @@ Das MapX Terrain-DSM v1 Tileset ist eine digitale Darstellung der Erdoberfläche
             "type": "hillshade",
             "source": "hillshadeSource",
             "minzoom": 6,
-            "maxzoom": 18,
+            "maxzoom": 16,
             "layout": {},
             "paint": {
               "hillshade-shadow-color": "#aaaaaa",
@@ -68,9 +68,9 @@ Das MapX Terrain-DSM v1 Tileset ist eine digitale Darstellung der Erdoberfläche
       },
       center: [15.16, 48.207],
       zoom: 14,
-      attributionControl: false, // Aktiviert das Attribution Control
+      attributionControl: false,
       minZoom: 6,
-      maxZoom: 18
+      maxZoom: 16
     });
 
     map.addControl(
@@ -79,7 +79,6 @@ Das MapX Terrain-DSM v1 Tileset ist eine digitale Darstellung der Erdoberfläche
       })
     );
 
-    // Add Fullscreen Control
     map.addControl(new maplibregl.FullscreenControl());
   });
 </script>
