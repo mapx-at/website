@@ -56,7 +56,7 @@ Das MapX Terrain-DSM v1 Tileset ist eine digitale Darstellung der Erdoberfläche
             "type": "hillshade",
             "source": "hillshadeSource",
             "minzoom": 6,
-            "maxzoom": 16,
+            "maxzoom": 18,
             "layout": {},
             "paint": {
               "hillshade-shadow-color": "#aaaaaa",
@@ -70,7 +70,7 @@ Das MapX Terrain-DSM v1 Tileset ist eine digitale Darstellung der Erdoberfläche
       zoom: 14,
       attributionControl: false,
       minZoom: 6,
-      maxZoom: 16
+      maxZoom: 18
     });
 
     map.addControl(
